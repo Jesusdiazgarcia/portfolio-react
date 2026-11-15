@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "slug": "pelialtouch",
+    "nombre": "PELIALTOUCH",
+    "subtitulo": "Películas y series con la API de OMDb",
+    "descripcion": "Catálogo para explorar películas y series, con búsqueda y filtros sobre la base de datos de OMDb.",
+    "tecnologias": [
+      "React",
+      "Vite",
+      "Bootstrap",
+      "NodeJS"
+    ],
+    "estado": "Completado"
+  },
+  {
+    "id": 2,
+    "slug": "sportspot",
+    "nombre": "SPORTSPOT",
+    "subtitulo": "Equipos amateur, rivales y partidos",
+    "descripcion": "Plataforma para registrar equipos deportivos, buscar rivales y organizar partidos en la comunidad.",
+    "tecnologias": [
+      "React",
+      "Next.js",
+      "Bootstrap",
+      "JavaScript"
+    ],
+    "estado": "En desarrollo"
+  },
+  {
+    "id": 3,
+    "slug": "portfolio-cms",
+    "nombre": "PORTFOLIO CMS",
+    "subtitulo": "Contenido del portafolio con panel propio",
+    "descripcion": "Sistema de gestión para portafolios: autenticación, subida de archivos y una API REST para proyectos.",
+    "tecnologias": [
+      "React",
+      "Express",
+      "MySQL",
+      "JWT auth"
+    ],
+    "estado": "En desarrollo"
+  }
+]
