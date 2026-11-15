@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import HeroMorph from './components/HeroMorph'
 import Trabajo from './components/Trabajo'
 import Perfil from './components/Perfil'
 import Herramientas from './components/Herramientas'
@@ -33,6 +34,7 @@ const App = () => {
         <Perfil />
         <Herramientas />
       </main>
+      <HeroMorph />
       <Contacto />
     </>
   )

@@ -47,6 +47,7 @@
 
 html {
   scroll-padding-top: calc(var(--nav-h) + 20px);
+  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -189,9 +190,19 @@ button {
   height: var(--nav-h);
   background: var(--bg);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Blur in a pseudo-element: backdrop-filter on .nav would trap the fixed menu
+   and the cursor/spark layers inside the 68px header box */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   -webkit-backdrop-filter: blur(10px) saturate(1.2);
   backdrop-filter: blur(10px) saturate(1.2);
-  border-bottom: 1px solid var(--line);
+  pointer-events: none;
 }
 
 .nav__bar {
@@ -904,6 +915,7 @@ a.tile--stat:hover .tile__arrow {
 }
 
 .cover {
+  position: relative;
   overflow: hidden;
   background: #101a2e;
 }
@@ -1022,6 +1034,101 @@ a.tile--stat:hover .tile__arrow {
   letter-spacing: 0.04em;
   line-height: 1.5;
   color: var(--inv-muted);
+}
+
+/* Morph hero → ficha */
+.hero-morph {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-morph__field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border: 1px solid rgba(142, 162, 255, 0.42);
+  border-radius: 6px;
+  background: var(--inv-bg);
+  box-shadow:
+    0 16px 38px -14px rgba(0, 0, 0, 0.85),
+    0 0 26px -8px rgba(142, 162, 255, 0.5);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--inv-muted);
+  white-space: pre;
+  will-change: transform, opacity;
+  transform-origin: 0 0;
+}
+
+.work__item--pelialtouch .cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 3, 6, var(--morph-dim, 0));
+  pointer-events: none;
+}
+
+.work__item--pelialtouch.is-born {
+  animation: morph-born 1.15s var(--ease);
+}
+
+.work__item--pelialtouch.is-born .cover::after {
+  content: '';
+  position: absolute;
+  inset: -20% auto -20% -45%;
+  width: 45%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(142, 162, 255, 0.22),
+    rgba(241, 236, 223, 0.6),
+    rgba(142, 162, 255, 0.22),
+    transparent
+  );
+  animation: morph-sweep 1.05s var(--ease) 0.05s both;
+  pointer-events: none;
+}
+
+@keyframes morph-sweep {
+  from {
+    opacity: 0;
+    transform: skewX(-14deg) translateX(0);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: skewX(-14deg) translateX(340%);
+  }
+}
+
+@keyframes morph-born {
+  0% {
+    border-color: rgba(142, 162, 255, 0.8);
+    box-shadow: 0 0 0 0 rgba(142, 162, 255, 0.4);
+  }
+
+  40% {
+    border-color: rgba(142, 162, 255, 0.55);
+    box-shadow: 0 0 46px -10px rgba(142, 162, 255, 0.45);
+  }
+
+  100% {
+    border-color: var(--line-inv);
+    box-shadow: 0 0 0 0 rgba(142, 162, 255, 0);
+  }
 }
 
 /* Perfil */

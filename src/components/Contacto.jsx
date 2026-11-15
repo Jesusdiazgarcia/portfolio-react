@@ -88,6 +88,10 @@ const Contacto = () => {
               <dt>Formación</dt>
               <dd>{perfil.estudios}</dd>
             </div>
+            <div>
+              <dt>Idiomas</dt>
+              <dd>{perfil.idiomas}</dd>
+            </div>
           </dl>
 
           <div className="closing__foot">

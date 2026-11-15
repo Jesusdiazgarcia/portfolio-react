@@ -110,13 +110,13 @@ const Hero = () => {
                 <li className="pl-4">
                   <span className="tok-key">"id"</span>: <span className="tok-fn">1</span>,
                 </li>
-                <li className="pl-4">
+                <li className="pl-4" data-morph-field="titulo">
                   <span className="tok-key">"titulo"</span>: <span className="tok-str">"Pelialtouch"</span>,
                 </li>
-                <li className="pl-4">
+                <li className="pl-4" data-morph-field="estado">
                   <span className="tok-key">"estado"</span>: <span className="tok-str">"completado"</span>,
                 </li>
-                <li className="pl-4">
+                <li className="pl-4" data-morph-field="stack">
                   <span className="tok-key">"stack"</span>: [<span className="tok-str">"React"</span>, <span className="tok-str">"NodeJS"</span>]
                 </li>
                 <li>{'}'}</li>

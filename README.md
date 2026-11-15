@@ -59,7 +59,7 @@ Todo el contenido vive en `src/data/`:
 
 - **`proyectos.json`**: `id`, `slug`, `nombre`, `subtitulo`, `descripcion`, `tecnologias[]`, `estado`. La portada se elige por `slug` en `Trabajo.jsx`.
 - **`conocimientos.json`**: `id`, `name`, `icon` (ruta en `public/icons/`), `uso`. Con `wide: true` el icono se muestra como logotipo sobre fondo claro (Express).
-- **`perfil.json`**: datos personales y de contacto usados en hero, footer y metadatos.
+- **`perfil.json`**: datos personales, idiomas y contacto usados en hero, footer y metadatos.
 
 Después de editar, `npm run dev` recarga solo. Recuerda actualizar `index.html` y `public/share.jpg` si cambian el título o el mensaje principal.
 
