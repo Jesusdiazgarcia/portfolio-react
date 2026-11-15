@@ -2,6 +2,8 @@
 
 Portafolio personal de desarrollador full-stack: APIs REST con Node, Express y MySQL, e interfaces en React. Una sola página con secciones de perfil, trabajo, método, herramientas y contacto.
 
+Sitio publicado: https://portfolio-react-rho-two-77.vercel.app
+
 ## Stack
 
 - React 19 + Vite 7 (SWC)
@@ -45,6 +47,9 @@ public/
 ├── assets/moments/      # momento de resaltado de palabras
 ├── icons/               # iconos de herramientas + créditos
 ├── favicon.svg
+├── apple-touch-icon.png # icono para iOS (180x180)
+├── robots.txt
+├── sitemap.xml
 └── share.jpg            # imagen para Open Graph y Twitter (1200x630)
 ```
 
@@ -71,10 +76,12 @@ El build es estático: sirve `dist/` desde cualquier hosting.
 - **Vercel / Netlify**: build `npm run build`, carpeta de salida `dist`.
 - **GitHub Pages**: si se publica en `usuario.github.io/repo`, define `base: '/repo/'` en `vite.config.js` y usa rutas relativas para los assets. Si se publica en dominio propio o raíz, no hace falta.
 
-Al tener el dominio final, actualiza `canonical`, `og:url` y `og:image` (este último debe ser una URL absoluta).
+Al tener el dominio final, actualiza la URL absoluta en `index.html` (`canonical`, `og:url`, `og:image`, `twitter:image` y el JSON-LD), en `public/robots.txt` y en `public/sitemap.xml`.
 
 ## Autor
 
 Jesús Díaz — Santiago, Chile
+- Sitio: https://portfolio-react-rho-two-77.vercel.app
 - Email: jesusramondiaz11@gmail.com
 - LinkedIn: https://linkedin.com/in/jesus-diaz-garcia/
+- GitHub: https://github.com/Jesusdiazgarcia

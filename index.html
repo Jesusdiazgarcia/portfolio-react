@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0f0e0b" />
     <meta name="site-kind" content="other" />
@@ -12,13 +13,25 @@
       name="description"
       content="Portafolio de Jesús Díaz, desarrollador full-stack en Santiago de Chile. APIs REST con Node, Express y MySQL, e interfaces con React, HTML, CSS y JavaScript; tres proyectos y las herramientas con las que trabajo."
     />
+    <link rel="canonical" href="https://portfolio-react-rho-two-77.vercel.app/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Jesús Díaz" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jesús Díaz" />
+    <meta property="og:url" content="https://portfolio-react-rho-two-77.vercel.app/" />
     <meta property="og:title" content="Jesús Díaz — Desarrollador full-stack" />
     <meta
       property="og:description"
       content="APIs REST con Node, Express y MySQL, e interfaces en React. Portafolio de Jesús Díaz, Santiago de Chile."
     />
-    <meta property="og:image" content="/share.jpg" />
+    <meta property="og:image" content="https://portfolio-react-rho-two-77.vercel.app/share.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Jesús Díaz, desarrollador full-stack: APIs REST con Node, Express y MySQL e interfaces en React"
+    />
     <meta property="og:locale" content="es_CL" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Jesús Díaz — Desarrollador full-stack" />
@@ -26,7 +39,11 @@
       name="twitter:description"
       content="APIs REST con Node, Express y MySQL, e interfaces en React. Portafolio de Jesús Díaz, Santiago de Chile."
     />
-    <meta name="twitter:image" content="/share.jpg" />
+    <meta name="twitter:image" content="https://portfolio-react-rho-two-77.vercel.app/share.jpg" />
+    <meta
+      name="twitter:image:alt"
+      content="Jesús Díaz, desarrollador full-stack: APIs REST con Node, Express y MySQL e interfaces en React"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,6 +63,62 @@
       setTimeout(function () {
         document.documentElement.classList.add('mo-safe')
       }, 2500)
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://portfolio-react-rho-two-77.vercel.app/#person",
+            "name": "Jesús Díaz",
+            "jobTitle": "Desarrollador full-stack",
+            "description": "Desarrollador full-stack en Santiago de Chile. APIs REST con Node, Express y MySQL e interfaces en React.",
+            "url": "https://portfolio-react-rho-two-77.vercel.app/",
+            "image": "https://portfolio-react-rho-two-77.vercel.app/share.jpg",
+            "email": "mailto:jesusramondiaz11@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Santiago",
+              "addressCountry": "CL"
+            },
+            "knowsAbout": [
+              "React",
+              "JavaScript",
+              "Node.js",
+              "Express",
+              "MySQL",
+              "APIs REST",
+              "HTML",
+              "CSS",
+              "Tailwind CSS",
+              "WordPress",
+              "PHP"
+            ],
+            "sameAs": [
+              "https://github.com/Jesusdiazgarcia",
+              "https://linkedin.com/in/jesus-diaz-garcia/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://portfolio-react-rho-two-77.vercel.app/#website",
+            "url": "https://portfolio-react-rho-two-77.vercel.app/",
+            "name": "Jesús Díaz — Portafolio",
+            "inLanguage": "es-CL",
+            "author": { "@id": "https://portfolio-react-rho-two-77.vercel.app/#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://portfolio-react-rho-two-77.vercel.app/#page",
+            "url": "https://portfolio-react-rho-two-77.vercel.app/",
+            "name": "Jesús Díaz — Desarrollador full-stack",
+            "inLanguage": "es-CL",
+            "isPartOf": { "@id": "https://portfolio-react-rho-two-77.vercel.app/#website" },
+            "about": { "@id": "https://portfolio-react-rho-two-77.vercel.app/#person" }
+          }
+        ]
+      }
     </script>
   </head>
   <body>

@@ -38,7 +38,8 @@ const Contacto = () => {
             <div className="closing__close-body">
               <p>
                 Cuéntame qué necesitas construir —la API, la base de datos o la interfaz que las
-                usa— y te respondo por correo. También puedes ver mi recorrido en LinkedIn.
+                usa— y te respondo por correo. También puedes ver mi recorrido en LinkedIn y el
+                código en GitHub.
               </p>
               <div className="btn-row">
                 <a className="btn btn--primary" href={`mailto:${perfil.email}`}>
@@ -72,6 +73,14 @@ const Contacto = () => {
               </dd>
             </div>
             <div>
+              <dt>GitHub</dt>
+              <dd>
+                <a href={perfil.github} target="_blank" rel="noopener noreferrer">
+                  /Jesusdiazgarcia <span aria-hidden="true">↗</span>
+                </a>
+              </dd>
+            </div>
+            <div>
               <dt>Base</dt>
               <dd>{perfil.ubicacion}</dd>
             </div>
@@ -87,6 +96,9 @@ const Contacto = () => {
             </a>
             <a href={perfil.linkedin} target="_blank" rel="noopener noreferrer">
               LinkedIn
+            </a>
+            <a href={perfil.github} target="_blank" rel="noopener noreferrer">
+              GitHub
             </a>
             <p className="legal">© {new Date().getFullYear()} Jesús Díaz · Hecho con React, Vite y Tailwind</p>
           </div>

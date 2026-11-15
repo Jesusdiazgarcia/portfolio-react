@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-react-rho-two-77.vercel.app/sitemap.xml

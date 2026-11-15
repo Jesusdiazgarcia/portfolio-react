@@ -5,5 +5,6 @@
   "estudios": "Desarrollo y Diseño Web",
   "email": "jesusramondiaz11@gmail.com",
   "linkedin": "https://linkedin.com/in/jesus-diaz-garcia/",
+  "github": "https://github.com/Jesusdiazgarcia",
   "descripcion": "Estudio Desarrollo y Diseño Web. Trabajo en las dos mitades de un proyecto: la API REST con Node, Express y MySQL, y la interfaz en React que la consume. Modelo los datos, escribo los endpoints y cuido cada pantalla."
 }
