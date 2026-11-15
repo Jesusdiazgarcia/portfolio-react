@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import perfil from '../data/perfil.json'
 import ClickSpark from './reactbits/ClickSpark'
 import GlowCursorLayer from './reactbits/GlowCursorLayer'
@@ -25,18 +25,44 @@ const Mark = () => (
 const Navbar = () => {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
+  const toggleRef = useRef(null)
+  const menuRef = useRef(null)
 
   useEffect(() => {
     if (!open) return
+    const menu = menuRef.current
+    const toggle = toggleRef.current
+
+    const focusables = () =>
+      menu ? Array.from(menu.querySelectorAll('a[href], button:not([disabled])')) : []
+
+    const frame = window.requestAnimationFrame(() => focusables()[0]?.focus())
+
     const onKey = (event) => {
       if (event.key === 'Escape') {
         setOpen(false)
-        document.querySelector('.nav__toggle')?.focus()
+        toggle?.focus()
+        return
+      }
+      if (event.key !== 'Tab') return
+      const items = focusables()
+      if (!items.length) return
+      const first = items[0]
+      const last = items[items.length - 1]
+      const inside = menu.contains(document.activeElement)
+      if (event.shiftKey && (!inside || document.activeElement === first)) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && (!inside || document.activeElement === last)) {
+        event.preventDefault()
+        first.focus()
       }
     }
+
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKey)
     return () => {
+      window.cancelAnimationFrame(frame)
       document.body.style.overflow = ''
       window.removeEventListener('keydown', onKey)
     }
@@ -84,6 +110,7 @@ const Navbar = () => {
 
   return (
     <header className="nav">
+      <div className="scroll-progress" aria-hidden="true" />
       <a className="skip-link" href="#contenido">Saltar al contenido</a>
 
       <div className="wrap nav__bar">
@@ -105,9 +132,14 @@ const Navbar = () => {
           ))}
         </nav>
 
+        <a className="btn btn--primary nav__cta" href={`mailto:${perfil.email}`}>
+          Contactar
+        </a>
+
         <button
           className="nav__toggle"
           type="button"
+          ref={toggleRef}
           aria-expanded={open}
           aria-controls="menu"
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
@@ -143,6 +175,10 @@ const Navbar = () => {
       <div
         className={open ? 'menu is-open' : 'menu'}
         id="menu"
+        ref={menuRef}
+        role={open ? 'dialog' : undefined}
+        aria-modal={open ? 'true' : undefined}
+        aria-label={open ? 'Menú de navegación' : undefined}
         aria-hidden={!open}
         inert={!open}
       >
@@ -164,7 +200,7 @@ const Navbar = () => {
 
       <GlowCursorLayer />
       <ClickSpark
-        sparkColor={['#2456d6', '#26251e']}
+        sparkColor={['#8ea2ff', '#f1ecdf']}
         sparkSize={10}
         sparkRadius={26}
         sparkCount={6}

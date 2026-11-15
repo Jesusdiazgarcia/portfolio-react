@@ -8,7 +8,6 @@
     "tecnologias": [
       "React",
       "Vite",
-      "Bootstrap",
       "NodeJS"
     ],
     "estado": "Completado"
@@ -22,7 +21,6 @@
     "tecnologias": [
       "React",
       "Next.js",
-      "Bootstrap",
       "JavaScript"
     ],
     "estado": "En desarrollo"
@@ -31,13 +29,13 @@
     "id": 3,
     "slug": "portfolio-cms",
     "nombre": "PORTFOLIO CMS",
-    "subtitulo": "Contenido del portafolio con panel propio",
-    "descripcion": "Sistema de gestión para portafolios: autenticación, subida de archivos y una API REST para proyectos.",
+    "subtitulo": "API REST y panel propio para el contenido",
+    "descripcion": "Panel de contenido con API REST propia: proyectos y archivos sobre MySQL, autenticación, y un front-end en React que consume los endpoints.",
     "tecnologias": [
-      "React",
       "Express",
       "MySQL",
-      "JWT auth"
+      "REST API",
+      "React"
     ],
     "estado": "En desarrollo"
   }

@@ -6,6 +6,7 @@ import Trabajo from './components/Trabajo'
 import Perfil from './components/Perfil'
 import Herramientas from './components/Herramientas'
 import Contacto from './components/Contacto'
+import './tailwind.css'
 import './styles.css'
 
 const loadLayer = (src, name) => {

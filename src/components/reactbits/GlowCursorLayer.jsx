@@ -7,7 +7,6 @@ const isSupported = () =>
 
 const GlowCursorLayer = () => {
   const [enabled, setEnabled] = useState(isSupported)
-  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     const fine = window.matchMedia('(pointer: fine)')
@@ -23,36 +22,12 @@ const GlowCursorLayer = () => {
     }
   }, [])
 
-  useEffect(() => {
-    if (!enabled) return
-
-    let x = 0
-    let y = 0
-    let frame = 0
-    const read = () => {
-      frame = 0
-      const ground = document.elementFromPoint(x, y)?.closest('.section--inverse')
-      setTheme(ground ? 'dark' : 'light')
-    }
-    const onMove = (event) => {
-      x = event.clientX
-      y = event.clientY
-      if (!frame) frame = window.requestAnimationFrame(read)
-    }
-
-    window.addEventListener('pointermove', onMove, { passive: true })
-    return () => {
-      window.cancelAnimationFrame(frame)
-      window.removeEventListener('pointermove', onMove)
-    }
-  }, [enabled])
-
   if (!enabled) return null
 
   return (
     <GlowCursor
-      color="#2456d6"
-      secondaryColor="#5d7fe0"
+      color="#8ea2ff"
+      secondaryColor="#b9c6ff"
       intensity={1.25}
       trailWidth={3.2}
       linger={1.5}
@@ -60,7 +35,7 @@ const GlowCursorLayer = () => {
       followSpeed={0.6}
       clickBurst={false}
       quality="medium"
-      theme={theme}
+      theme="dark"
       maxDevicePixelRatio={1.5}
       style={{
         position: 'fixed',

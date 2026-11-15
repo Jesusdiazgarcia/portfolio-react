@@ -1,9 +1,9 @@
 {
   "nombre": "Jesús Díaz",
-  "titulo": "Desarrollador front-end",
+  "titulo": "Desarrollador full-stack",
   "ubicacion": "Santiago, Chile",
   "estudios": "Desarrollo y Diseño Web",
   "email": "jesusramondiaz11@gmail.com",
   "linkedin": "https://linkedin.com/in/jesus-diaz-garcia/",
-  "descripcion": "Estudio Desarrollo y Diseño Web. Construyo interfaces con HTML, CSS, JavaScript y React, con atención al detalle y a quien las usa."
+  "descripcion": "Estudio Desarrollo y Diseño Web. Trabajo en las dos mitades de un proyecto: la API REST con Node, Express y MySQL, y la interfaz en React que la consume. Modelo los datos, escribo los endpoints y cuido cada pantalla."
 }

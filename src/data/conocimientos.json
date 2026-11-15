@@ -1,10 +1,12 @@
 [
-  { "id": 1, "name": "HTML", "icon": "/icons/html5.svg", "uso": "Estructura y semántica", "nivel": "Avanzado" },
-  { "id": 2, "name": "CSS", "icon": "/icons/css3.svg", "uso": "Sistemas de diseño", "nivel": "Avanzado" },
-  { "id": 3, "name": "JavaScript", "icon": "/icons/javascript.svg", "uso": "Lógica e interacción", "nivel": "Intermedio" },
-  { "id": 4, "name": "React", "icon": "/icons/react.svg", "uso": "Componentes y estado", "nivel": "Intermedio" },
-  { "id": 5, "name": "Bootstrap", "icon": "/icons/bootstrap.svg", "uso": "Grillas y componentes", "nivel": "Avanzado" },
-  { "id": 6, "name": "WordPress", "icon": "/icons/wordpress.svg", "uso": "Temas y contenido", "nivel": "Intermedio" },
-  { "id": 7, "name": "PHP", "icon": "/icons/php.svg", "uso": "APIs y formularios", "nivel": "Básico" },
-  { "id": 8, "name": "MySQL", "icon": "/icons/mysql.svg", "uso": "Esquemas y consultas", "nivel": "Básico" }
+  { "id": 1, "name": "Node.js", "icon": "/icons/nodejs-icon.svg", "uso": "APIs y servidor" },
+  { "id": 2, "name": "Express", "icon": "/icons/express.svg", "uso": "Rutas y middleware", "wide": true },
+  { "id": 3, "name": "MySQL", "icon": "/icons/mysql.svg", "uso": "Esquemas y consultas" },
+  { "id": 4, "name": "JavaScript", "icon": "/icons/javascript.svg", "uso": "Lógica e interacción" },
+  { "id": 5, "name": "React", "icon": "/icons/react.svg", "uso": "Interfaces y estado" },
+  { "id": 6, "name": "HTML", "icon": "/icons/html5.svg", "uso": "Estructura y semántica" },
+  { "id": 7, "name": "CSS", "icon": "/icons/css3.svg", "uso": "Sistemas de diseño" },
+  { "id": 8, "name": "Tailwind CSS", "icon": "/icons/tailwindcss-icon.svg", "uso": "Estilos utilitarios" },
+  { "id": 9, "name": "WordPress", "icon": "/icons/wordpress.svg", "uso": "Temas y contenido" },
+  { "id": 10, "name": "PHP", "icon": "/icons/php.svg", "uso": "Formularios y APIs" }
 ]
