@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import perfil from '../data/perfil.json'
+
+const CURL_COMMAND =
+  'curl "https://api.portfolio-cms.cl/v1/proyectos?orden=recientes" \\\n  -H "accept: application/json"'
 
 const clock = new Intl.DateTimeFormat('es-CL', {
   hour: '2-digit',
@@ -21,6 +24,24 @@ const useSantiagoClock = () => {
 
 const Hero = () => {
   const time = useSantiagoClock()
+  const [copyState, setCopyState] = useState('')
+  const copyTimer = useRef(0)
+
+  useEffect(() => () => window.clearTimeout(copyTimer.current), [])
+
+  const copyCurl = async () => {
+    window.clearTimeout(copyTimer.current)
+    try {
+      await navigator.clipboard.writeText(CURL_COMMAND)
+      setCopyState('ok')
+    } catch {
+      setCopyState('err')
+    }
+    copyTimer.current = window.setTimeout(() => setCopyState(''), 2000)
+  }
+
+  const copyLabel =
+    copyState === 'ok' ? 'Copiado' : copyState === 'err' ? 'No se pudo' : 'Copiar cURL'
 
   return (
     <section className="hero" id="inicio" aria-labelledby="hero-h" data-enter>
@@ -55,16 +76,16 @@ const Hero = () => {
             </div>
           </article>
 
-          <div className="tile tile--catalog ui" data-ui="catalog" data-enter-media aria-hidden="true">
-            <p className="catalog__caption">API del panel · Portfolio CMS</p>
+          <div className="tile tile--catalog ui" data-ui="catalog" data-enter-media>
+            <p className="catalog__caption" aria-hidden="true">API del panel · Portfolio CMS</p>
 
-            <div className="ui-catalog__bar">
+            <div className="ui-catalog__bar" aria-hidden="true">
               <span className="ui-catalog__dots"><i /><i /><i /></span>
               <span className="ui-catalog__url">api.portfolio-cms.cl/v1</span>
               <span className="ui-catalog__count">200 OK</span>
             </div>
 
-            <div className="ui-catalog__tools">
+            <div className="ui-catalog__tools" aria-hidden="true">
               <span className="ui-chip is-on">GET</span>
               <span className="ui-chip">POST</span>
               <span className="ui-chip">PUT</span>
@@ -72,59 +93,110 @@ const Hero = () => {
               <span className="ui-catalog__sort">JSON</span>
             </div>
 
-            <div className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-hidden px-3 pt-1 pb-3.5 font-[family-name:var(--font-mono)] text-[10.5px] leading-[1.55] text-[var(--inv-muted)] sm:px-4">
-              <p className="text-[11px] tracking-[0.02em] text-[var(--inv-ink)]">
-                <b className="mr-1.5 font-semibold text-[var(--accent-hover)]">GET</b> /proyectos?orden=recientes
-              </p>
-              <ul className="m-0 flex list-none flex-col p-0 [&>li]:whitespace-pre">
-                <li>[</li>
-                <li>{'{'}</li>
-                <li className="pl-4">
-                  <span className="tok-key">"id"</span>: <span className="tok-fn">3</span>,
-                </li>
-                <li className="pl-4">
-                  <span className="tok-key">"titulo"</span>: <span className="tok-str">"Portfolio CMS"</span>,
-                </li>
-                <li className="pl-4">
-                  <span className="tok-key">"estado"</span>: <span className="tok-str">"publicado"</span>,
-                </li>
-                <li className="pl-4">
-                  <span className="tok-key">"stack"</span>: [<span className="tok-str">"Express"</span>, <span className="tok-str">"MySQL"</span>]
-                </li>
-                <li>{'},'}</li>
-                <li>{'{'}</li>
-                <li className="pl-4">
-                  <span className="tok-key">"id"</span>: <span className="tok-fn">2</span>,
-                </li>
-                <li className="pl-4">
-                  <span className="tok-key">"titulo"</span>: <span className="tok-str">"Sportspot"</span>,
-                </li>
-                <li className="pl-4">
-                  <span className="tok-key">"estado"</span>: <span className="tok-str">"en revisión"</span>,
-                </li>
-                <li className="pl-4">
-                  <span className="tok-key">"stack"</span>: [<span className="tok-str">"Next.js"</span>, <span className="tok-str">"React"</span>]
-                </li>
-                <li>{'},'}</li>
-                <li>{'{'}</li>
-                <li className="pl-4">
-                  <span className="tok-key">"id"</span>: <span className="tok-fn">1</span>,
-                </li>
-                <li className="pl-4" data-morph-field="titulo">
-                  <span className="tok-key">"titulo"</span>: <span className="tok-str">"Pelialtouch"</span>,
-                </li>
-                <li className="pl-4" data-morph-field="estado">
-                  <span className="tok-key">"estado"</span>: <span className="tok-str">"completado"</span>,
-                </li>
-                <li className="pl-4" data-morph-field="stack">
-                  <span className="tok-key">"stack"</span>: [<span className="tok-str">"React"</span>, <span className="tok-str">"NodeJS"</span>]
-                </li>
-                <li>{'}'}</li>
-                <li>]</li>
-              </ul>
+            <div className="ui-catalog__body">
+              <div className="ui-catalog__code" aria-hidden="true">
+                <ul className="ui-catalog__json">
+                  <li>[</li>
+                  <li>{'{'}</li>
+                  <li className="pl-4">
+                    <span className="tok-key">"id"</span>: <span className="tok-fn">3</span>,
+                  </li>
+                  <li className="pl-4">
+                    <span className="tok-key">"titulo"</span>: <span className="tok-str">"Portfolio CMS"</span>,
+                  </li>
+                  <li className="pl-4">
+                    <span className="tok-key">"estado"</span>: <span className="tok-str">"publicado"</span>,
+                  </li>
+                  <li className="pl-4">
+                    <span className="tok-key">"stack"</span>: [<span className="tok-str">"Express"</span>, <span className="tok-str">"MySQL"</span>]
+                  </li>
+                  <li>{'},'}</li>
+                  <li>{'{'}</li>
+                  <li className="pl-4">
+                    <span className="tok-key">"id"</span>: <span className="tok-fn">2</span>,
+                  </li>
+                  <li className="pl-4">
+                    <span className="tok-key">"titulo"</span>: <span className="tok-str">"Cosmos"</span>,
+                  </li>
+                  <li className="pl-4">
+                    <span className="tok-key">"estado"</span>: <span className="tok-str">"completado"</span>,
+                  </li>
+                  <li className="pl-4">
+                    <span className="tok-key">"stack"</span>: [<span className="tok-str">"React"</span>, <span className="tok-str">"Tailwind"</span>]
+                  </li>
+                  <li>{'},'}</li>
+                  <li>{'{'}</li>
+                  <li className="pl-4">
+                    <span className="tok-key">"id"</span>: <span className="tok-fn">1</span>,
+                  </li>
+                  <li className="pl-4" data-morph-field="titulo">
+                    <span className="tok-key">"titulo"</span>: <span className="tok-str">"Pelialtouch"</span>,
+                  </li>
+                  <li className="pl-4" data-morph-field="estado">
+                    <span className="tok-key">"estado"</span>: <span className="tok-str">"completado"</span>,
+                  </li>
+                  <li className="pl-4" data-morph-field="stack">
+                    <span className="tok-key">"stack"</span>: [<span className="tok-str">"React"</span>, <span className="tok-str">"NodeJS"</span>]
+                  </li>
+                  <li>{'}'}</li>
+                  <li>]</li>
+                </ul>
+              </div>
+
+              <div className="ui-catalog__req" role="group" aria-label="Petición a la API">
+                <p className="ui-catalog__req-title">Petición</p>
+                <p className="ui-catalog__req-line">
+                  <span className="ui-catalog__method">GET</span>
+                  <span className="ui-catalog__path">/proyectos?orden=recientes</span>
+                </p>
+                <dl className="ui-catalog__meta">
+                  <div>
+                    <dt>accept</dt>
+                    <dd>application/json</dd>
+                  </div>
+                  <div>
+                    <dt>cache</dt>
+                    <dd>no-store</dd>
+                  </div>
+                </dl>
+                <p className="ui-catalog__req-title">cURL</p>
+                <pre className="ui-catalog__curl">
+                  <code>
+                    <span className="tok-fn">curl</span>
+                    {' "https://api.portfolio-cms.cl/v1/proyectos?orden=recientes" \\\n  '}
+                    <span className="tok-key">-H</span>
+                    {' "accept: application/json"'}
+                  </code>
+                </pre>
+                <button
+                  type="button"
+                  className="ui-catalog__copy"
+                  data-state={copyState || undefined}
+                  onClick={copyCurl}
+                >
+                  <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    {copyState === 'ok' ? (
+                      <path d="M3.5 8.5 6.5 11.5 12.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    ) : (
+                      <>
+                        <rect x="5.5" y="5.5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" strokeWidth="1.4" />
+                        <path d="M10.5 3.5v-.5A1.5 1.5 0 0 0 9 1.5H3.5A1.5 1.5 0 0 0 2 3v5.5A1.5 1.5 0 0 0 3.5 10H4" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                      </>
+                    )}
+                  </svg>
+                  {copyLabel}
+                </button>
+                <span className="sr-only" role="status">
+                  {copyState === 'ok'
+                    ? 'Comando copiado al portapapeles'
+                    : copyState === 'err'
+                      ? 'No se pudo copiar el comando'
+                      : ''}
+                </span>
+              </div>
             </div>
 
-            <div className="ui-catalog__foot">
+            <div className="ui-catalog__foot" aria-hidden="true">
               <span>Express · MySQL · React</span>
               <span>18 ms</span>
             </div>
@@ -140,7 +212,7 @@ const Hero = () => {
               </span>
               <span className="tile__arrow" aria-hidden="true">↗</span>
             </span>
-            <span className="stat__value">03</span>
+            <span className="stat__value">04</span>
             <span className="stat__note">Propios, con texto y datos reales</span>
           </a>
 

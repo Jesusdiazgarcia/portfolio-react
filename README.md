@@ -29,11 +29,15 @@ src/
 ├── components/
 │   ├── Navbar.jsx       # navegación, menú móvil, efectos de cursor y clic
 │   ├── Hero.jsx         # encabezado + consola de API
-│   ├── Trabajo.jsx      # tres fichas de proyecto con portadas SVG
+│   ├── Trabajo.jsx      # fichas de proyecto con portadas capturadas y SVG
+│   ├── ProyectoModal.jsx # ficha ampliada: detalle, demo y código
+│   ├── projectCovers.jsx # portada de cada proyecto, elegida por slug
 │   ├── Perfil.jsx       # método: datos, contratos, interfaz
 │   ├── Herramientas.jsx # lista de las diez herramientas + editor
 │   ├── Contacto.jsx     # cierre y datos de contacto
 │   └── reactbits/       # efectos React Bits adaptados
+├── assets/
+│   └── proyectos/       # capturas reales de las demos
 ├── data/
 │   ├── perfil.json      # nombre, título, ubicación, email, LinkedIn
 │   ├── proyectos.json   # fichas de proyecto
@@ -57,7 +61,7 @@ public/
 
 Todo el contenido vive en `src/data/`:
 
-- **`proyectos.json`**: `id`, `slug`, `nombre`, `subtitulo`, `descripcion`, `tecnologias[]`, `estado`. La portada se elige por `slug` en `Trabajo.jsx`.
+- **`proyectos.json`**: `id`, `slug`, `nombre`, `subtitulo`, `descripcion`, `tecnologias[]`, `estado` y `detalle` (`rol`, `puntos[]`, `demo`, `repo`, `nota`). La portada se elige por `slug` en `projectCovers.jsx`; PeliAltouch, Cosmos y Mis Tareas usan capturas de la demo y Portfolio CMS, ilustración SVG.
 - **`conocimientos.json`**: `id`, `name`, `icon` (ruta en `public/icons/`), `uso`. Con `wide: true` el icono se muestra como logotipo sobre fondo claro (Express).
 - **`perfil.json`**: datos personales, idiomas y contacto usados en hero, footer y metadatos.
 
@@ -67,6 +71,7 @@ Después de editar, `npm run dev` recarga solo. Recuerda actualizar `index.html`
 
 - Los efectos respetan `prefers-reduced-motion`; GlowCursor solo se activa con puntero fino.
 - El menú móvil cierra con Escape, atrapa el foco y lo devuelve al botón.
+- La ficha de proyecto usa un `<dialog>` nativo: Escape y clic en el fondo cierran, el foco queda dentro y vuelve a la tarjeta; la página no scrollea mientras está abierta.
 - Los mockups (consola de API, editor) son decorativos y están ocultos al lector de pantalla.
 
 ## Deploy

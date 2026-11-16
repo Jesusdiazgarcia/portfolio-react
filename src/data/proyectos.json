@@ -10,20 +10,41 @@
       "Vite",
       "NodeJS"
     ],
-    "estado": "Completado"
+    "estado": "Completado",
+    "detalle": {
+      "rol": "Interfaz, servicios y consumo de OMDb",
+      "puntos": [
+        "Búsqueda por título contra la API de OMDb, con debounce y normalización de la respuesta.",
+        "Filtro por género y orden alfabético sobre los resultados, descartando los que llegan sin póster.",
+        "Servicio propio que traduce cada resultado a id, título, año y póster antes de pintarlo en React."
+      ],
+      "demo": "https://pelialtouch.vercel.app",
+      "repo": "https://github.com/Jesusdiazgarcia/buscapelis"
+    }
   },
   {
     "id": 2,
-    "slug": "sportspot",
-    "nombre": "SPORTSPOT",
-    "subtitulo": "Equipos amateur, rivales y partidos",
-    "descripcion": "Plataforma para registrar equipos deportivos, buscar rivales y organizar partidos en la comunidad.",
+    "slug": "cosmos",
+    "nombre": "COSMOS",
+    "subtitulo": "Explorador espacial con datos en vivo de la NASA",
+    "descripcion": "App que consume la API de la NASA: exoplanetas, imagen astronómica del día y datos de Marte, con la foto del día y un campo de estrellas de fondo.",
     "tecnologias": [
       "React",
-      "Next.js",
-      "JavaScript"
+      "Vite",
+      "Tailwind",
+      "NASA API"
     ],
-    "estado": "En desarrollo"
+    "estado": "Completado",
+    "detalle": {
+      "rol": "Interfaz y consumo de las APIs de la NASA",
+      "puntos": [
+        "Tres vistas con React Router: exoplanetas, imagen astronómica del día y fotos de Marte.",
+        "Datos en vivo de la API de la NASA en cada sección, sin contenido de relleno.",
+        "Interfaz oscura a pantalla completa en Tailwind, con navegación entre secciones sin recarga."
+      ],
+      "demo": "https://nasa-ten-rho.vercel.app",
+      "repo": "https://github.com/Jesusdiazgarcia/nasa"
+    }
   },
   {
     "id": 3,
@@ -37,6 +58,39 @@
       "REST API",
       "React"
     ],
-    "estado": "En desarrollo"
+    "estado": "En desarrollo",
+    "detalle": {
+      "rol": "API, base de datos e interfaz",
+      "puntos": [
+        "API REST en Express sobre MySQL para proyectos y archivos, con autenticación.",
+        "Panel propio para editar el contenido y un front en React que consume los endpoints.",
+        "En desarrollo: todavía sin demo pública, se ejecuta en local con la base MySQL."
+      ],
+      "nota": "Sin demo pública por ahora; el panel corre en local con MySQL."
+    }
+  },
+  {
+    "id": 4,
+    "slug": "mistareas",
+    "nombre": "MIS TAREAS",
+    "subtitulo": "Gestor de tareas propio, instalable como PWA",
+    "descripcion": "App para organizar tareas en lista, calendario y tablero Kanban, con etiquetas, prioridades y sincronización en Firebase; se instala en el iPhone y funciona sin conexión.",
+    "tecnologias": [
+      "React",
+      "Vite",
+      "Tailwind",
+      "Firebase"
+    ],
+    "estado": "Completado",
+    "detalle": {
+      "rol": "Interfaz, sincronización y PWA",
+      "puntos": [
+        "Tres vistas del mismo tablero: lista, calendario y Kanban con arrastre entre columnas.",
+        "Etiquetas, prioridad, recurrencia, búsqueda y filtros por estado.",
+        "PWA instalable que sincroniza en Firebase, funciona sin conexión e importa y exporta tareas."
+      ],
+      "demo": "https://mistareas-one.vercel.app",
+      "repo": "https://github.com/Jesusdiazgarcia/mistareas"
+    }
   }
 ]
