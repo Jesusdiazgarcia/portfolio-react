@@ -41,6 +41,7 @@ src/
 ├── data/
 │   ├── perfil.json      # nombre, título, ubicación, email, LinkedIn
 │   ├── proyectos.json   # fichas de proyecto
+│   ├── sitio.json       # ficha técnica de este portafolio
 │   └── conocimientos.json # herramientas, icono y uso
 ├── styles.css           # sistema de diseño (tokens, bento, componentes)
 ├── tailwind.css         # utilidades de Tailwind
@@ -61,7 +62,8 @@ public/
 
 Todo el contenido vive en `src/data/`:
 
-- **`proyectos.json`**: `id`, `slug`, `nombre`, `subtitulo`, `descripcion`, `tecnologias[]`, `estado` y `detalle` (`rol`, `puntos[]`, `demo`, `repo`, `nota`). La portada se elige por `slug` en `projectCovers.jsx`; PeliAltouch, Cosmos y Mis Tareas usan capturas de la demo y Portfolio CMS, ilustración SVG.
+- **`proyectos.json`**: `id`, `slug`, `nombre`, `subtitulo`, `descripcion`, `tecnologias[]`, `estado` y `detalle` (`rol`, `puntos[]`, `decisiones[]`, `demo`, `repo`, `nota`). Cada decisión guarda `problema`, `decision` y `porque`. La portada se elige por `slug` en `projectCovers.jsx`; PeliAltouch, Cosmos y Mis Tareas usan capturas de la demo y Portfolio CMS, ilustración SVG.
+- **`sitio.json`**: la ficha técnica de este portafolio; usa el mismo formato que un proyecto y añade `ledger[]` para el resumen que se ve en la tarjeta.
 - **`conocimientos.json`**: `id`, `name`, `icon` (ruta en `public/icons/`), `uso`. Con `wide: true` el icono se muestra como logotipo sobre fondo claro (Express).
 - **`perfil.json`**: datos personales, idiomas y contacto usados en hero, footer y metadatos.
 

@@ -18,6 +18,13 @@
         "Filtro por género y orden alfabético sobre los resultados, descartando los que llegan sin póster.",
         "Servicio propio que traduce cada resultado a id, título, año y póster antes de pintarlo en React."
       ],
+      "decisiones": [
+        {
+          "problema": "OMDb devuelve los pósters vacíos como «N/A» y nombra los campos a su manera (imdbID, Title, Year).",
+          "decision": "Normalizar en el servicio: cada resultado sale como id, título, año y póster, y los que no tienen imagen se descartan.",
+          "porque": "La interfaz no depende del proveedor; si cambia la API se toca un archivo y ningún componente."
+        }
+      ],
       "demo": "https://pelialtouch.vercel.app",
       "repo": "https://github.com/Jesusdiazgarcia/buscapelis"
     }
@@ -41,6 +48,13 @@
         "Tres vistas con React Router: exoplanetas, imagen astronómica del día y fotos de Marte.",
         "Datos en vivo de la API de la NASA en cada sección, sin contenido de relleno.",
         "Interfaz oscura a pantalla completa en Tailwind, con navegación entre secciones sin recarga."
+      ],
+      "decisiones": [
+        {
+          "problema": "El archivo de exoplanetas no expone un endpoint REST simple: su catálogo se consulta con TAP/SQL desde el navegador.",
+          "decision": "Escribir la consulta TOP 12 por año de descubrimiento y resolver CORS con un proxy público, y pasar esa URL por un useFetch compartido.",
+          "porque": "El hook centraliza carga, error y cancelación en APOD y exoplanetas; el proxy aislado en una URL es la única pieza frágil."
+        }
       ],
       "demo": "https://nasa-ten-rho.vercel.app",
       "repo": "https://github.com/Jesusdiazgarcia/nasa"
@@ -89,8 +103,109 @@
         "Etiquetas, prioridad, recurrencia, búsqueda y filtros por estado.",
         "PWA instalable que sincroniza en Firebase, funciona sin conexión e importa y exporta tareas."
       ],
+      "decisiones": [
+        {
+          "problema": "La app tenía que funcionar sin conexión y, a la vez, mantener las tareas entre dispositivos.",
+          "decision": "Local-first: cada cambio se escribe en localStorage al instante y se replica en Firebase Realtime Database cuando está disponible.",
+          "porque": "Si no hay red o Firebase falla, la app sigue operando; la nube es un espejo, no la fuente de verdad."
+        }
+      ],
       "demo": "https://mistareas-one.vercel.app",
       "repo": "https://github.com/Jesusdiazgarcia/mistareas"
+    }
+  },
+  {
+    "id": 5,
+    "slug": "jrdstore",
+    "nombre": "JRD STORE",
+    "subtitulo": "Tienda de tecnología con checkout y pagos en Laravel",
+    "descripcion": "Tienda de tecnología para Chile: audio, setup y energía con una vitrina color-block, compra sin cuenta y un checkout que calcula los totales en el servidor. Pagos Webpay detrás de un contrato, pedidos con estados explícitos y panel de administración en Filament.",
+    "tecnologias": [
+      "Laravel",
+      "Livewire",
+      "Tailwind",
+      "Filament",
+      "MySQL",
+      "PHPUnit"
+    ],
+    "estado": "Caso de estudio",
+    "detalle": {
+      "rol": "Diseño, interfaz, backend, base de datos y pruebas",
+      "video": {
+        "src": "/jrdstore/jrdstore-flow.mp4",
+        "poster": "/jrdstore/home.jpg",
+        "duracion": "25 segundos"
+      },
+      "puntos": [
+        "Vitrina color-block para audio, setup y energía: portada, catálogo con filtros y ficha con variantes.",
+        "Catálogo con búsqueda, orden y categorías; compra sin cuenta y carrito que se mantiene al volver de la pasarela.",
+        "Totales, IVA y envío se recalculan en el servidor en cada paso; el navegador nunca decide el monto.",
+        "Pagos idempotentes: el retorno del navegador y el webhook comparten un registro único por evento, así el pedido se marca pagado una sola vez.",
+        "Cada línea del pedido guarda un snapshot de nombre, código, precio y variante; el catálogo puede cambiar sin alterar pedidos históricos.",
+        "Panel Filament para productos y pedidos, más 25 tests."
+      ],
+      "decisiones": [
+        {
+          "problema": "La tienda venía de un catálogo de camisetas y el surtido tecnológico no encajaba con esa identidad.",
+          "decision": "Rehacer la vitrina en bloques de color por categoría, con tipografía de póster y fotos de producto sobre fondo neutro.",
+          "porque": "Cada categoría se reconoce de un vistazo y la tienda se lee como tecnología, no como una tienda de ropa."
+        },
+        {
+          "problema": "El total del checkout se podía calcular o alterar en el navegador antes de pagar.",
+          "decision": "Mover el cálculo a un servicio del servidor que recalcula carrito, envío e IVA en cada paso y guarda los montos en pesos enteros.",
+          "porque": "El precio que se cobra no depende del cliente; el navegador solo muestra lo que el servidor confirmó."
+        },
+        {
+          "problema": "La pasarela puede avisar del pago por el retorno del navegador y por webhook, y ambos avisos pueden llegar juntos o repetirse.",
+          "decision": "Registrar cada evento con un identificador único por proveedor dentro de una transacción y confirmar el pedido solo si el evento es nuevo.",
+          "porque": "El pedido se marca pagado una sola vez, aunque el usuario recargue o el webhook se reintente."
+        },
+        {
+          "problema": "Webpay no tiene entorno local, así que el checkout no se podía probar de punta a punta.",
+          "decision": "Poner la pasarela detrás de una interfaz común, con una implementación simulada para desarrollo y Webpay Plus para producción.",
+          "porque": "El dominio no conoce al proveedor; cambiar de pasarela o probar el flujo no toca carrito, pedidos ni correos."
+        }
+      ],
+      "galeria": [
+        {
+          "src": "/jrdstore/home.jpg",
+          "alt": "Portada de JRD Store con el titular «Tecnología sin relleno» y el Parlante Vela destacado",
+          "caption": "Vitrina y portada"
+        },
+        {
+          "src": "/jrdstore/catalogo.jpg",
+          "alt": "Catálogo de JRD Store con buscador, filtros por categoría y productos de audio, setup y energía",
+          "caption": "Catálogo y filtros"
+        },
+        {
+          "src": "/jrdstore/producto.jpg",
+          "alt": "Ficha del Parlante Vela con precio, selector de variante y botón para agregar al carrito",
+          "caption": "Ficha y variante"
+        },
+        {
+          "src": "/jrdstore/interaccion.jpg",
+          "alt": "Producto agregado al carrito: aviso de confirmación y contador del carrito actualizado",
+          "caption": "Carrito invitado"
+        }
+      ],
+      "estadoActual": {
+        "listo": [
+          "Vitrina rediseñada: portada, catálogo y ficha",
+          "Catálogo, carrito, checkout y confirmación",
+          "Totales, IVA y envío en el servidor",
+          "Webpay tras un contrato y webhook firmado",
+          "Estados de pedido y correos transaccionales",
+          "Panel de administración y 25 tests"
+        ],
+        "pendiente": [
+          "Rediseño de carrito, checkout y legales",
+          "RUT y boleta electrónica (SII)",
+          "Credenciales de comercio de Webpay",
+          "Catálogo real con costos y stock por variante",
+          "Dominio, correo propio y worker de colas"
+        ]
+      },
+      "nota": "Pieza de portafolio: sin demo pública ni ventas activas. El video recorre la vitrina rediseñada en local y los pagos son simulados; para operar faltan RUT/SII, credenciales de Webpay, catálogo real y el rediseño de carrito y checkout."
     }
   }
 ]

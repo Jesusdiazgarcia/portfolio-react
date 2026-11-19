@@ -1,0 +1,37 @@
+{
+  "slug": "sitio",
+  "meta": true,
+  "etiqueta": "Cómo está hecho",
+  "nombre": "ESTE PORTAFOLIO",
+  "subtitulo": "El sitio que estás leyendo, contado por dentro",
+  "descripcion": "Una sola página en React y Vite: contenido en JSON, un sistema de estilos propio y fichas de proyecto en un diálogo nativo, sin backend.",
+  "tecnologias": ["React", "Vite", "GSAP", "Tailwind"],
+  "estado": "Publicado",
+  "ledger": [
+    { "k": "Contenido", "v": "JSON en src/data; se edita sin tocar componentes" },
+    { "k": "Ficha", "v": "Un <dialog> nativo con foco atrapado" },
+    { "k": "Coste", "v": "Sin backend ni librería de UI" }
+  ],
+  "detalle": {
+    "rol": "Diseño, interfaz, accesibilidad y rendimiento",
+    "puntos": [
+      "Cinco secciones y un sistema de estilos propio; todo el texto vive en src/data y se edita sin tocar componentes.",
+      "Fichas de proyecto en un <dialog> nativo: foco atrapado, Escape y clic en el fondo para cerrar, scroll bloqueado.",
+      "Movimiento con GSAP y respeto por prefers-reduced-motion; sin backend ni librería de UI."
+    ],
+    "decisiones": [
+      {
+        "problema": "La ficha se abría con un backdrop-filter de pantalla completa y, con rendering por software, caía a ~26 fps con cinco frames sobre 50 ms.",
+        "decision": "Quitar el blur del fondo y acortar la animación de entrada a 0,3 s.",
+        "porque": "El desenfoque se recompone sobre toda la página en cada frame; sin él la apertura quedó en ~50 fps y sin tareas largas."
+      },
+      {
+        "problema": "El foco de teclado se escapaba al body entre el último y el primer control de la ficha.",
+        "decision": "Usar <dialog> con showModal() y añadir un trap explícito, con foco inicial en el panel.",
+        "porque": "Escape, foco y fondo inerte los pone el navegador; el trap cubre el salto que el diálogo no resuelve."
+      }
+    ],
+    "demo": "https://portfolio-react-rho-two-77.vercel.app/",
+    "repo": "https://github.com/Jesusdiazgarcia/portfolio-react"
+  }
+}

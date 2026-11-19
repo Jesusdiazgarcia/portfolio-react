@@ -1,8 +1,21 @@
 import pelialtouchShot from '../assets/proyectos/pelialtouch.jpg'
 import mistareasShot from '../assets/proyectos/mistareas.jpg'
 import cosmosShot from '../assets/proyectos/cosmos.jpg'
+import sitioShot from '../assets/proyectos/sitio.png'
+import jrdstoreShot from '../assets/proyectos/jrdstore.jpg'
 
 const covers = {
+  sitio: (
+    <img
+      className="cover__shot"
+      src={sitioShot}
+      width="1440"
+      height="630"
+      loading="lazy"
+      decoding="async"
+      alt="Portada del portafolio: el nombre Jesús Díaz, el resumen de perfil y la consola de la API del panel con la petición en cURL"
+    />
+  ),
   pelialtouch: (
     <img
       className="cover__shot"
@@ -58,6 +71,17 @@ const covers = {
       loading="lazy"
       decoding="async"
       alt="Portada de Cosmos con el título «Explora lo desconocido» y un campo de estrellas de fondo, marcada como datos en vivo de la API de la NASA"
+    />
+  ),
+  jrdstore: (
+    <img
+      className="cover__shot"
+      src={jrdstoreShot}
+      width="1440"
+      height="900"
+      loading="lazy"
+      decoding="async"
+      alt="Portada de JRD Store con el titular «Tecnología sin relleno» y el Parlante Vela destacado sobre fondo azul"
     />
   ),
 }

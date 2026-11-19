@@ -101,17 +101,64 @@ const ProyectoModal = ({ proyecto, onClose }) => {
           </button>
 
           <div className="project-modal__panel" ref={panelRef} tabIndex={-1}>
-            <div className="cover project-modal__cover">{covers[proyecto.slug]}</div>
+            {covers[proyecto.slug] && (
+              <div className="cover project-modal__cover">{covers[proyecto.slug]}</div>
+            )}
 
             <div className="project-modal__body">
               <p className="project-modal__eyebrow">
-                Ficha {String(proyecto.id).padStart(2, '0')} · {proyecto.estado}
+                {proyecto.etiqueta ?? `Ficha ${String(proyecto.id).padStart(2, '0')}`} · {proyecto.estado}
               </p>
               <h2 className="project-modal__title" id="project-modal-title">
                 {proyecto.nombre}
               </h2>
               <p className="project-modal__sub">{proyecto.subtitulo}</p>
               <p className="project-modal__desc">{proyecto.descripcion}</p>
+
+              {detalle.video && (
+                <>
+                  <h3 className="project-modal__label">Demo · {detalle.video.duracion}</h3>
+                  <figure className="project-modal__video">
+                    <video
+                      key={proyecto.slug}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      poster={detalle.video.poster}
+                      aria-label={`Demostración del flujo de compra de ${proyecto.nombre}`}
+                    >
+                      <source src={detalle.video.src} type="video/mp4" />
+                      Tu navegador no puede reproducir este video.
+                    </video>
+                  </figure>
+                </>
+              )}
+
+              {detalle.decisiones?.length > 0 && (
+                <>
+                  <h3 className="project-modal__label">
+                    {detalle.decisiones.length > 1 ? 'Decisiones' : 'Decisión'}
+                  </h3>
+                  <div className="project-modal__decisions">
+                    {detalle.decisiones.map((decision) => (
+                      <dl className="project-modal__decision" key={decision.problema}>
+                        <div>
+                          <dt>Problema</dt>
+                          <dd>{decision.problema}</dd>
+                        </div>
+                        <div>
+                          <dt>Decisión</dt>
+                          <dd>{decision.decision}</dd>
+                        </div>
+                        <div>
+                          <dt>Por qué</dt>
+                          <dd>{decision.porque}</dd>
+                        </div>
+                      </dl>
+                    ))}
+                  </div>
+                </>
+              )}
 
               {detalle.puntos?.length > 0 && (
                 <>
@@ -121,6 +168,53 @@ const ProyectoModal = ({ proyecto, onClose }) => {
                       <li key={punto}>{punto}</li>
                     ))}
                   </ul>
+                </>
+              )}
+
+              {detalle.galeria?.length > 0 && (
+                <>
+                  <h3 className="project-modal__label">Pantallas</h3>
+                  <ul className="project-modal__shots">
+                    {detalle.galeria.map((shot) => (
+                      <li key={shot.src}>
+                        <figure>
+                          <img
+                            src={shot.src}
+                            alt={shot.alt}
+                            width="1440"
+                            height="810"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <figcaption>{shot.caption}</figcaption>
+                        </figure>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {detalle.estadoActual && (
+                <>
+                  <h3 className="project-modal__label">Estado actual</h3>
+                  <div className="project-modal__estado">
+                    <div>
+                      <p className="project-modal__estado-head">Listo y probado</p>
+                      <ul className="project-modal__puntos">
+                        {detalle.estadoActual.listo.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="project-modal__estado-head">Pendiente para operar</p>
+                      <ul className="project-modal__puntos project-modal__puntos--todo">
+                        {detalle.estadoActual.pendiente.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </>
               )}
 
