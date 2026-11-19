@@ -2,7 +2,7 @@ import pelialtouchShot from '../assets/proyectos/pelialtouch.jpg'
 import mistareasShot from '../assets/proyectos/mistareas.jpg'
 import cosmosShot from '../assets/proyectos/cosmos.jpg'
 import sitioShot from '../assets/proyectos/sitio.png'
-import jrdstoreShot from '../assets/proyectos/jrdstore.jpg'
+import fcstoreShot from '../assets/proyectos/fcstore.jpg'
 
 const covers = {
   sitio: (
@@ -73,15 +73,15 @@ const covers = {
       alt="Portada de Cosmos con el título «Explora lo desconocido» y un campo de estrellas de fondo, marcada como datos en vivo de la API de la NASA"
     />
   ),
-  jrdstore: (
+  fcstore: (
     <img
       className="cover__shot"
-      src={jrdstoreShot}
+      src={fcstoreShot}
       width="1440"
-      height="900"
+      height="810"
       loading="lazy"
       decoding="async"
-      alt="Portada de JRD Store con el titular «Tecnología sin relleno» y el Parlante Vela destacado sobre fondo azul"
+      alt="Portada de FCStore con la camiseta del Barcelona en grande, el menú Local, Visitante y Alternativa y el catálogo destacado"
     />
   ),
 }

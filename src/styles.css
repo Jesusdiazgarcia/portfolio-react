@@ -1138,13 +1138,13 @@ a.tile--stat:hover .tile__arrow {
   grid-column: span 5;
 }
 
-.work__item--jrdstore {
+.work__item--fcstore {
   grid-column: span 12;
 }
 
-.work__item--jrdstore .cover {
+.work__item--fcstore .cover {
   flex: none;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 2 / 1;
 }
 
 .work__item--portfolio-cms {
@@ -1293,6 +1293,10 @@ a.tile--stat:hover .tile__arrow {
 
 .work__item--mistareas .cover__shot {
   object-position: top center;
+}
+
+.work__item--fcstore .cover__shot {
+  object-position: center 42%;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1464,11 +1468,11 @@ html.has-modal {
   object-position: top center;
 }
 
-.project-modal--jrdstore .cover__shot {
-  object-position: center 84%;
+.project-modal--fcstore .cover__shot {
+  object-position: center 38%;
 }
 
-.project-modal--jrdstore .project-modal__cover {
+.project-modal--fcstore .project-modal__cover {
   aspect-ratio: 16 / 9;
 }
 
@@ -2634,6 +2638,7 @@ html.has-modal {
   }
 
   .work__item--mistareas .cover,
+  .work__item--fcstore .cover,
   .work__item--cosmos .cover {
     flex: none;
     min-height: 0;

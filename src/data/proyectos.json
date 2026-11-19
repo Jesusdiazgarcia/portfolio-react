@@ -116,10 +116,10 @@
   },
   {
     "id": 5,
-    "slug": "jrdstore",
-    "nombre": "JRD STORE",
-    "subtitulo": "Tienda de tecnología con checkout y pagos en Laravel",
-    "descripcion": "Tienda de tecnología para Chile: audio, setup y energía con una vitrina color-block, compra sin cuenta y un checkout que calcula los totales en el servidor. Pagos Webpay detrás de un contrato, pedidos con estados explícitos y panel de administración en Filament.",
+    "slug": "fcstore",
+    "nombre": "FCSTORE",
+    "subtitulo": "Tienda de camisetas con checkout y pagos en Laravel",
+    "descripcion": "Tienda de camisetas de fútbol para Chile: catálogo editorial, compra sin cuenta y un checkout que calcula los totales en el servidor. Pagos Webpay detrás de un contrato, pedidos con estados explícitos y panel de administración en Filament.",
     "tecnologias": [
       "Laravel",
       "Livewire",
@@ -132,24 +132,18 @@
     "detalle": {
       "rol": "Diseño, interfaz, backend, base de datos y pruebas",
       "video": {
-        "src": "/jrdstore/jrdstore-flow.mp4",
-        "poster": "/jrdstore/home.jpg",
-        "duracion": "25 segundos"
+        "src": "/fcstore/fcstore-flow.mp4",
+        "poster": "/fcstore/home.jpg",
+        "duracion": "39 segundos"
       },
       "puntos": [
-        "Vitrina color-block para audio, setup y energía: portada, catálogo con filtros y ficha con variantes.",
-        "Catálogo con búsqueda, orden y categorías; compra sin cuenta y carrito que se mantiene al volver de la pasarela.",
+        "Catálogo con categorías local, visitante y alternativa; ficha con talla, carrito y checkout invitado.",
         "Totales, IVA y envío se recalculan en el servidor en cada paso; el navegador nunca decide el monto.",
         "Pagos idempotentes: el retorno del navegador y el webhook comparten un registro único por evento, así el pedido se marca pagado una sola vez.",
-        "Cada línea del pedido guarda un snapshot de nombre, código, precio y variante; el catálogo puede cambiar sin alterar pedidos históricos.",
-        "Panel Filament para productos y pedidos, más 25 tests."
+        "Cada línea del pedido guarda un snapshot de nombre, código, precio y talla; el catálogo puede cambiar sin alterar pedidos históricos.",
+        "Panel Filament para productos y pedidos, más 25 tests y CI en GitHub Actions."
       ],
       "decisiones": [
-        {
-          "problema": "La tienda venía de un catálogo de camisetas y el surtido tecnológico no encajaba con esa identidad.",
-          "decision": "Rehacer la vitrina en bloques de color por categoría, con tipografía de póster y fotos de producto sobre fondo neutro.",
-          "porque": "Cada categoría se reconoce de un vistazo y la tienda se lee como tecnología, no como una tienda de ropa."
-        },
         {
           "problema": "El total del checkout se podía calcular o alterar en el navegador antes de pagar.",
           "decision": "Mover el cálculo a un servicio del servidor que recalcula carrito, envío e IVA en cada paso y guarda los montos en pesos enteros.",
@@ -168,29 +162,28 @@
       ],
       "galeria": [
         {
-          "src": "/jrdstore/home.jpg",
-          "alt": "Portada de JRD Store con el titular «Tecnología sin relleno» y el Parlante Vela destacado",
-          "caption": "Vitrina y portada"
-        },
-        {
-          "src": "/jrdstore/catalogo.jpg",
-          "alt": "Catálogo de JRD Store con buscador, filtros por categoría y productos de audio, setup y energía",
+          "src": "/fcstore/catalogo.jpg",
+          "alt": "Catálogo de FCStore con filtros por categoría y cuatro camisetas",
           "caption": "Catálogo y filtros"
         },
         {
-          "src": "/jrdstore/producto.jpg",
-          "alt": "Ficha del Parlante Vela con precio, selector de variante y botón para agregar al carrito",
-          "caption": "Ficha y variante"
+          "src": "/fcstore/producto.jpg",
+          "alt": "Ficha de la camiseta del Barcelona con selector de talla",
+          "caption": "Ficha y talla"
         },
         {
-          "src": "/jrdstore/interaccion.jpg",
-          "alt": "Producto agregado al carrito: aviso de confirmación y contador del carrito actualizado",
-          "caption": "Carrito invitado"
+          "src": "/fcstore/checkout.jpg",
+          "alt": "Checkout con datos de contacto, dirección y resumen del pedido",
+          "caption": "Checkout invitado"
+        },
+        {
+          "src": "/fcstore/pedido.jpg",
+          "alt": "Pedido confirmado con estado pagado y dirección de entrega",
+          "caption": "Pedido pagado"
         }
       ],
       "estadoActual": {
         "listo": [
-          "Vitrina rediseñada: portada, catálogo y ficha",
           "Catálogo, carrito, checkout y confirmación",
           "Totales, IVA y envío en el servidor",
           "Webpay tras un contrato y webhook firmado",
@@ -198,14 +191,13 @@
           "Panel de administración y 25 tests"
         ],
         "pendiente": [
-          "Rediseño de carrito, checkout y legales",
           "RUT y boleta electrónica (SII)",
           "Credenciales de comercio de Webpay",
-          "Catálogo real con costos y stock por variante",
+          "Catálogo real con costos y stock por talla",
           "Dominio, correo propio y worker de colas"
         ]
       },
-      "nota": "Pieza de portafolio: sin demo pública ni ventas activas. El video recorre la vitrina rediseñada en local y los pagos son simulados; para operar faltan RUT/SII, credenciales de Webpay, catálogo real y el rediseño de carrito y checkout."
+      "nota": "Pieza de portafolio: sin demo pública ni ventas activas. El video se grabó en local con pagos simulados; para operar faltan RUT/SII, credenciales de Webpay y catálogo real."
     }
   }
 ]

@@ -17,7 +17,7 @@ const Trabajo = () => {
           <p>
             Cinco proyectos propios: un catálogo sobre la API de OMDb, un explorador con datos en
             vivo de la NASA, un panel de contenido con su API, un gestor de tareas instalable y una
-            tienda de tecnología con checkout y pagos. En todos hice la interfaz; en el panel, además,
+            tienda de camisetas con checkout y pagos. En todos hice la interfaz; en el panel, además,
             la API REST en Express y MySQL que la alimenta, y en la tienda, el backend completo en
             Laravel. Al final, una ficha técnica de este mismo sitio.
           </p>
